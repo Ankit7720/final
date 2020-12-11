@@ -6,6 +6,7 @@ import com.uxpsystems.assignement.models.User;
 import com.uxpsystems.assignement.models.UserPrincipal;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-   // @Cacheable("users")
+    @Cacheable("users")
     @Override
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
